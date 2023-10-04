@@ -15,15 +15,14 @@ public class MyConnector {
         HttpClient httpClient = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
                 .build();
-
+        String uri = "https://api.nationalize.io?name="+person;
         HttpRequest request = HttpRequest.newBuilder()
                 .version(HttpClient.Version.HTTP_2)
                 .GET()
-                .uri(URI.create("https://api.nationalize.io/?name=person"))
+                .uri(URI.create(uri))
                 .build();
         HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.statusCode());
-        //response body of the very first retrieved field
         System.out.println(response.body());
         return response.body();
     }

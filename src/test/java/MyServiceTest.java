@@ -23,9 +23,8 @@ class MyServiceTest {
     }
 
     @Test
-    void testGetAnyPerson() throws IOException, InterruptedException, ExecutionException {
+    void testGetAnyPerson() throws IOException, InterruptedException {
         when(myConnector.fetchDetailsByName(anyString())).thenReturn(anyString());
-
         CompletableFuture<Object> result = myService.getAnyPerson();
         Assertions.assertNotNull(result);
     }
